@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import RestaurantItem from '../RestaurantItem/RestaurantItem';
 
 class RestaurantList extends Component {
   state = {
     url: 'http://localhost:3000/api/list',
-    restaurants: restaurants,
+    restaurants: [],
     error: '',
   };
 
@@ -37,11 +38,11 @@ class RestaurantList extends Component {
           <div className="row">
             <div className="col-10 mx-auto col-md-6 text-center text-uppercase mb-3" />
             <div className="row">
-              {error ? (
-                <h1 className="text-danger text-center">{error}</h1>
+              {this.state.error ? (
+                <h1 className="text-danger text-center">{this.state.error}</h1>
               ) : (
-                restaurants.map(resto => {
-                  <RestaurantItem></RestaurantItem>;
+                this.state.restaurants.map(resto => {
+                  return <div>{resto.name}</div>;
                 })
               )}
             </div>
